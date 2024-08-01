@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Grocery List</title>
+    <style>
+        .contain {
+            text-align: center;
+            background-image: url(box-of-groceries.jpg);
+            background-size: cover;
+            width: 100%;
+            height: 600px;
+        }
+
+        h1 {
+            padding: 24px 0 0 0;
+        }
+
+        input {
+            height: 40px;
+            width: 300px;
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            height: 45px;
+            width: 50px;
+            margin: 0;
+            padding: 0;
+            border: 1px solid gray;
+            background-color: white;
+        }
+
+        .done {
+            text-decoration: line-through;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+            margin-bottom: 8px;
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        .delete-btn {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <h1>Grocery</h1>
+        <form id="groceryForm">
+            <input type="text" id="groceryInput" placeholder="Add Grocery" required>
+            <button type="submit">Add</button>
+        </form>
+        <ul id="groceryList"></ul>
+    </div>
+    <script>
+        document.getElementById('groceryForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            var groceryInput = document.getElementById('groceryInput');
+            var groceryList = document.getElementById('groceryList');
+            var grocery = groceryInput.value.trim();
+        //     if (grocery) {
+        //         var listItem = document.createElement('ul');
+        //         listItem.textContent = grocery;
+        //         listItem.addEventListener('click', function () {
+        //             this.classList.toggle('done');
+        //         });
+        //         groceryList.appendChild(listItem);
+        //         groceryInput.value = '';
+        //     }
+        // });
+        const listItem = document.createElement('li');
+                listItem.className = 'item';
+                listItem.innerHTML = `
+                    <span>${itemName}</span>
+                    <span class="delete-btn" onclick="deleteItem()">Delete</span>`;
+
+                groceryList.appendChild(listItem);
+                itemInput.value = '';
+            }
+
+            deleteItem(element) => {
+                const listItem = element.closest('.item');
+                listItem.remove();
+            };
+        });
+    </script>
+</body>
+
+</html>
